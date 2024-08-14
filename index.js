@@ -17,7 +17,7 @@ function loadPlugins(sock, m) {
             // Handle plugins with specific commands and multiple prefixes
             if (typeof plugin.handler === 'function') {
                 const message = m.messages[0];
-                const text = message.conversation || message.extendedTextMessage?.text || '';
+                const text = message.extendedTextMessage?.text || message.message.conversation || '';
 
                 // Define possible prefixes
                 const prefixes = ['.', '#', '/', '!', '?', '*', '$', '@'];
