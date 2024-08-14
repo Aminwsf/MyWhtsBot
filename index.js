@@ -17,7 +17,7 @@ function loadPlugins(sock, m) {
             // Handle plugins with specific commands and multiple prefixes
             if (typeof plugin.handler === 'function') {
                 const message = m.messages[0];
-                const text = message.extendedTextMessage?.text || message.message.conversation || '';
+                const text = message.extendedTextMessage?.text || message.conversation || '';
 
                 // Define possible prefixes
                 const prefixes = ['.', '#', '/', '!', '?', '*', '$', '@'];
@@ -116,17 +116,18 @@ const sessionsDir = path.join(__dirname, './sessions');
             conn.ev.on('creds.update', saveCreds);
 
             conn.ev.on('messages.upsert', async m => {
- if (m.messages[0].key.remoteJid.endsWith('@g.us')) {
+ if (m.messages[0].key.remoteJid.endsWith('@g.us')) {}
                     console.log(JSON.stringify(m, undefined, 2));
       
- }
+ 
               
                 console.log('replying to', m.messages[0].key.remoteJid);
                 await delay(500);
                 await conn.readMessages([m.messages[0].key])
    await delay(1000);
                 await conn.sendPresenceUpdate('composing', m.messages[0].key.remoteJid)
-    await delay(1000);                loadPlugins(conn, m); // Load plugins dynamically
+    await delay(1000);                
+                loadPlugins(conn, m); // Load plugins dynamically
 
 
             });
