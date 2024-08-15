@@ -38,7 +38,8 @@ const text = message.extendedTextMessage?.text || message?.message?.conversation
 
                     // Check if the command matches the plugin's command
                     if (plugin.handler.command.test(command)) {
-
+                        conn.sendPresenceUpdate('composing', m.messages[0].key.remoteJid)
+                        setTimeout(() => {}, 500);
                         // if isOwner
                         const owners = ['212646480851', '212646']
                         const uid = message.key.remoteJid.split('@')[0]
@@ -125,8 +126,7 @@ const sessionsDir = path.join(__dirname, './sessions');
                 await delay(500);
                 await conn.readMessages([m.messages[0].key])
    await delay(1000);
-                await conn.sendPresenceUpdate('composing', m.messages[0].key.remoteJid)
-    await delay(1000);                
+                                
                 loadPlugins(conn, m); // Load plugins dynamically
 
 
