@@ -38,7 +38,7 @@ const text = message.extendedTextMessage?.text || message?.message?.conversation
 
                     // Check if the command matches the plugin's command
                     if (plugin.handler.command.test(command)) {
-                        conn.sendPresenceUpdate('composing', m.messages[0].key.remoteJid)
+                        sock.sendPresenceUpdate('composing', m.messages[0].key.remoteJid)
                         setTimeout(() => {}, 500);
                         // if isOwner
                         const owners = ['212646480851', '212646']
