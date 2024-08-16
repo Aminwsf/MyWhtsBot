@@ -12,7 +12,11 @@ function loadPlugins(sock, m) {
     const pluginsDir = path.resolve(__dirname, 'plugins');
     fs.readdirSync(pluginsDir).forEach(file => {
         if (file.endsWith('.js')) {
-            const plugin = require(path.join(pluginsDir, file));
+            const pluginPath = path.join(pluginsDir, file);
+            
+            delete require.cache[require.resolve(pluginPath)];
+            
+            const plugin = require(pluginPath);
 
             // Handle plugins with specific commands and multiple prefixes
             if (typeof plugin.handler === 'function') {
