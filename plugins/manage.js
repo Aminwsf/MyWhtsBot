@@ -172,4 +172,4 @@ const handler = async (m, { conn, command, text }) => {
 
 handler.command = /^(saveplugin|getplugin|delplugin|listplugin|savefile|getfile|delfile|listfile)$/i;
 
-module.exports = handler;
+module.exports = {handler};
