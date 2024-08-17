@@ -46,5 +46,7 @@ const handler = async (m, { conn, text }) => {
 };
 
 handler.command = /^(get|fetch)$/i;
+handler.tags = ["tools"];
+handler.cmd = ["get", "fetch"]
 
 module.exports = {handler};
