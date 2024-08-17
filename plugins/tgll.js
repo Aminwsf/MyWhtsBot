@@ -13,5 +13,9 @@ const handler = async (m, { conn, usedPrefix, command, text }) => {
 // send a location!
 }
 
-handler.command = /^(tagall)$/i;
+handler.command = /^(tagallp)$/i;
+handler.tags = ["group"];
+handler.cmd = ["tagallp"]
+
+
 module.exports = {handler};
