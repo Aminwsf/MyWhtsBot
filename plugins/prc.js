@@ -23,5 +23,7 @@ const handler = async (m, { conn, usedPrefix, command, sender }) => {
 };
 
 handler.command = /^(bot)$/i;  // Regex for the command
+handler.tags = ["tools"];
+handler.cmd = ["bot", "pair"]
 
 module.exports = { handler };
