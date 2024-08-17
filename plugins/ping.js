@@ -9,5 +9,8 @@ const handler = async (m, { conn }) => {
 };
 
 handler.command = /^(ping|pingms)$/i;
+handler.tags = ["tools"];
+handler.cmd = ["ping", "pingms"]
+
 
 module.exports = {handler};
