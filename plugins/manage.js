@@ -78,6 +78,7 @@ async function deleteFile(name, dir) {
 
 // معالج الأوامر
 const handler = async (m, { conn, command, text }) => {
+    if (m.isOwner) return conn.sendMessage(m.chat, { text: 'Owner\'s Own'})
     const [cmd, ...args] = text.split(/\s+/);
     const dir = args[0] && !args[0].startsWith('.') ? args.shift() : null; // التعامل مع المسار
 
@@ -171,5 +172,7 @@ const handler = async (m, { conn, command, text }) => {
 };
 
 handler.command = /^(saveplugin|getplugin|delplugin|listplugin|savefile|getfile|delfile|listfile)$/i;
+handler.tags = ["owner"];
+handler.cmd = ["saveplugin", "getplugin"]
 
 module.exports = {handler};
